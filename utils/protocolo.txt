@@ -1,0 +1,18 @@
+=== PROTOCOLO DE COMUNICACION ===
+
+Modulos:
+    - Kernel: Servidor y Cliente
+    - CPU: Servidor y Cliente
+    - Memoria: Servidor
+    - EntradaSalida: Cliente
+
+Se inician primero los servidores y luego se conectan los clientes.
+De esta manera, se iniciaria de esta manera:
+    - Se inicia el modulo de Memoria como servidor
+    - Se inicia el modulo de CPU (Dispatch e Interrupt) como servidor
+    - Se conecta el cliente Kernel con Memoria y con CPU (Dispatch e Interrupt)
+    - Se conecta el cliente CPU con Memoria
+    - Se inicia el modulo de Kernel como servidor
+    - Se conecta EntradaSalida con Kernel y Memoria
+
+A su vez por cada conexion entre los modulos realizamos un Handshake. En caso de que no sea asi, marca un Error en el log.
